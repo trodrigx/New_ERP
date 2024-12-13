@@ -1,0 +1,82 @@
+/* Estilo para el contenedor principal */
+.container {
+    margin-top: 40px; /* Espacio debajo de la barra de navegación */
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+h2 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Mensajes de éxito o error */
+.alert {
+    margin-top: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Estilo del formulario */
+.employee-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilo de los campos de formulario */
+.employee-form input, .employee-form select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilo para el botón */
+.employee-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.employee-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los campos con error (si los hubiera) */
+.employee-form .form-error {
+    border-color: #e74c3c;
+}
+
+/* Agregar espaciado entre los elementos del formulario */
+.employee-form p {
+    margin-bottom: 12px;
+}
+
+/* Estilo para el campo de archivo (si existe) */
+.employee-form input[type="file"] {
+    padding: 10px;
+}
+
+/* Estilo de los labels */
+.employee-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Espaciado adicional */
+.employee-form .form-group {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/job_position.css' %}">
+</head>
+<body>
+
+    {% include 'encabezado.html' %}
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Empleados</h2>
+    
+        <!-- Campo de entrada para el filtro -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <input type="text" id="filterInput" class="form-control" placeholder="Buscar por nombre o DNI">
+                </div>
+            </div>
+            <div class="col-md-4 text-end">
+                <a href="{% url 'add_employee' %}" class="btn btn-primary">Agregar Empleado</a>
+            </div>
+        </div>
+    
+        <table class="table table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>DNI</th>
+                    <th>Posición</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="employeeTable">
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.pkInt }}</td>
+                    <td>{{ employee.firstName }}</td>
+                    <td>{{ employee.lastName }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.phoneNumber }}</td>
+                    <td>{{ employee.dni }}</td>
+                    <td>{{ employee.jobPosition.jobPositionName }}</td>
+                    <td>{{ employee.status }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">No hay empleados disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+
+    {% include 'footer.html' %}
+
+
+    <script>
+        document.getElementById('filterInput').addEventListener('keyup', function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#employeeTable tr');
+    
+            rows.forEach(row => {
+                const name = row.children[1]?.textContent.toLowerCase() || '';
+                const dni = row.children[5]?.textContent.toLowerCase() || '';
+    
+                if (name.includes(filter) || dni.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
